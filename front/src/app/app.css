@@ -1,0 +1,181 @@
+/* General Body Styling */
+body {
+  background-color: #f8f9fa; /* Light gray background */
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Container and Heading */
+.container {
+  max-width: 1200px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+h1.text-center {
+  color: #343a40; /* Darker heading color */
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+/* Card Styling */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  background-color: #007bff; /* Primary blue for card headers */
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 15px 20px;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.card-body {
+  padding: 25px;
+}
+
+/* Table Styling */
+.table {
+  margin-bottom: 1rem;
+  color: #343a40;
+}
+
+.table thead th {
+  background-color: #e9ecef; /* Lighter gray for table headers */
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+  font-weight: 600;
+  padding: 12px 15px;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1; /* Subtle hover effect */
+}
+
+.table tbody td {
+  padding: 12px 15px;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+
+.table tbody td:last-child {
+  white-space: nowrap; /* Prevent buttons from wrapping */
+}
+
+/* Form Styling */
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  padding: 10px 15px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-select {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  padding: 10px 15px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-select:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button Styling */
+.btn {
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Icons in Buttons */
+.btn i {
+  margin-right: 5px;
+}
+
+/* Horizontal Rule */
+hr {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Small text for password hint */
+small.form-text {
+  color: #6c757d;
+}

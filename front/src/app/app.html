@@ -1,0 +1,201 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- Users Section -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h2>Users</h2>
+          <button class="btn btn-light btn-sm" (click)="toggleUsersList()">
+            <i class="bi" [class.bi-chevron-down]="!showUsersList" [class.bi-chevron-up]="showUsersList"></i>
+          </button>
+        </div>
+        <div class="card-body" style="overflow-x: auto;">
+          <div *ngIf="!selectedUser">
+            <h3>Create User</h3>
+            <form (ngSubmit)="createUser()">
+              <div class="mb-3">
+                <input type="text" class="form-control" name="username" [(ngModel)]="newUser.username" placeholder="Username" required>
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" name="email" [(ngModel)]="newUser.email" placeholder="Email" required>
+              </div>
+              <div class="mb-3">
+                <input type="password" class="form-control" name="password" [(ngModel)]="newUser.password" placeholder="Password" required>
+              </div>
+              <button type="submit" class="btn btn-success">Create</button>
+            </form>
+          </div>
+          <div *ngIf="selectedUser">
+            <h3>Edit User</h3>
+            <form (ngSubmit)="updateUser()">
+              <div class="mb-3">
+                <input type="text" class="form-control" name="username" [(ngModel)]="selectedUser.username" placeholder="Username" required>
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" name="email" [(ngModel)]="selectedUser.email" placeholder="Email" required>
+              </div>
+              <div class="mb-3">
+                <input type="password" class="form-control" name="password" [(ngModel)]="selectedUser.password" placeholder="Password">
+                <small class="form-text text-muted">Leave blank to keep the same password.</small>
+              </div>
+              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="button" class="btn btn-secondary ms-2" (click)="selectedUser = null">Cancel</button>
+            </form>
+          </div>
+          <div *ngIf="showUsersList">
+            <hr>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{ user.username }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>
+                    <div class="d-flex gap-1">
+                      <button class="btn btn-sm btn-primary" (click)="selectUser(user)">Edit</button>
+                      <button class="btn btn-sm btn-danger" (click)="deleteUser(user._id)">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entities Section -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h2>Entities</h2>
+          <button class="btn btn-light btn-sm" (click)="toggleEntitiesList()">
+            <i class="bi" [class.bi-chevron-down]="!showEntitiesList" [class.bi-chevron-up]="showEntitiesList"></i>
+          </button>
+        </div>
+        <div class="card-body" style="overflow-x: auto;">
+          <div *ngIf="!selectedEntity">
+            <h3>Create Entity</h3>
+            <form (ngSubmit)="createEntity()">
+              <div class="mb-3">
+                <input type="text" class="form-control" name="name" [(ngModel)]="newEntity.name" placeholder="Name" required>
+              </div>
+              <button type="submit" class="btn btn-success">Create</button>
+            </form>
+          </div>
+          <div *ngIf="selectedEntity">
+            <h3>Edit Entity</h3>
+            <form (ngSubmit)="updateEntity()">
+              <div class="mb-3">
+                <input type="text" class="form-control" name="name" [(ngModel)]="selectedEntity.name" placeholder="Name" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="button" class="btn btn-secondary ms-2" (click)="selectedEntity = null">Cancel</button>
+            </form>
+          </div>
+          <div *ngIf="showEntitiesList">
+            <hr>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let entity of entities">
+                  <td>{{ entity.name }}</td>
+                  <td>
+                    <div class="d-flex gap-1">
+                      <button class="btn btn-sm btn-primary" (click)="selectEntity(entity)">Edit</button>
+                      <button class="btn btn-sm btn-danger" (click)="deleteEntity(entity._id)">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User-Entities Section -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h2>User-Entities</h2>
+          <button class="btn btn-light btn-sm" (click)="toggleUserEntitiesList()">
+            <i class="bi" [class.bi-chevron-down]="!showUserEntitiesList" [class.bi-chevron-up]="showUserEntitiesList"></i>
+          </button>
+        </div>
+        <div class="card-body" style="overflow-x: auto;">
+          <div *ngIf="!selectedUserEntity">
+            <h3>Create User-Entity</h3>
+            <form (ngSubmit)="createUserEntity()">
+              <div class="mb-3">
+                <select class="form-select" name="userId" [(ngModel)]="newUserEntity.userId" required>
+                  <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <select class="form-select" name="entityId" [(ngModel)]="newUserEntity.entityId" required>
+                  <option *ngFor="let entity of entities" [value]="entity._id">{{ entity.name }}</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success">Create</button>
+            </form>
+          </div>
+          <div *ngIf="selectedUserEntity">
+            <h3>Edit User-Entity</h3>
+            <form (ngSubmit)="updateUserEntity()">
+              <div class="mb-3">
+                <select class="form-select" name="userId" [(ngModel)]="selectedUserEntity.userId" required>
+                  <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <select class="form-select" name="entityId" [(ngModel)]="selectedUserEntity.entityId" required>
+                  <option *ngFor="let entity of entities" [value]="entity._id">{{ entity.name }}</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="button" class="btn btn-secondary ms-2" (click)="cancelUserEntitySelection()">Cancel</button>
+            </form>
+          </div>
+          <div *ngIf="showUserEntitiesList">
+            <hr>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Entity</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let userEntity of userEntities">
+                  <td>{{ userEntity.user?.username }}</td>
+                  <td>{{ userEntity.entity?.name }}</td>
+                  <td>
+                    <div class="d-flex gap-1">
+                      <button class="btn btn-sm btn-primary" (click)="selectUserEntity(userEntity)">Edit</button>
+                      <button class="btn btn-sm btn-danger" (click)="deleteUserEntity(userEntity._id)">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet />
