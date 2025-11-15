@@ -47,7 +47,7 @@ npm install
 Créez un fichier `.env` dans le répertoire `back` avec votre chaîne de connexion MongoDB et le port :
 
 ```
-MONGO_URI=mongodb://localhost:27017/gemini-test # Ou votre chaîne de connexion MongoDB Atlas
+MONGO_URI=mongodb://localhost:27017/test 
 PORT=3000
 ```
 
