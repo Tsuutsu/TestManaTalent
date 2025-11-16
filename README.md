@@ -44,10 +44,11 @@ npm install
 ```
 
 **Configurer MongoDB :**
-Créez un fichier `.env` dans le répertoire `back` avec votre chaîne de connexion MongoDB et le port :
+Modifier le fichier `.env` dans le répertoire `back` avec votre chaîne de connexion MongoDB et le port :
 
 ```
 MONGO_URI=mongodb://localhost:27017/test 
+(Changez ceci par votre chaine de connexion MongoDB)
 PORT=3000
 ```
 
